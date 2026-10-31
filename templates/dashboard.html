@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Dashboard | S4M Trust Bank{% endblock %}
+{% block content %}
+<div class="page-content container-fluid">
+  <div class="page-heading"><div><p class="eyebrow">Good morning, {{ user.first_name|default:user.username }}</p><h1>Your financial overview</h1><p class="page-description">Keep track of your money and manage your account with ease.</p></div></div>
+  <div class="dashboard-grid">
+    <div>
+      <div class="balance-card"><span class="balance-label">Available balance</span><div class="balance-amount">BDT {{ account.balance|floatformat:2 }}</div><span class="account-number">Account number <strong>{{ account.account_number }}</strong></span></div>
+      <div class="metric-grid">
+        <div class="card metric-card"><div class="metric-icon deposit">↗</div><div><div class="metric-label">Total deposited</div><div class="metric-value">BDT {{ total_deposited|floatformat:2 }}</div></div></div>
+        <div class="card metric-card"><div class="metric-icon withdraw">↘</div><div><div class="metric-label">Total withdrawn</div><div class="metric-value">BDT {{ total_withdrawn|floatformat:2 }}</div></div></div>
+      </div>
+    </div>
+    <div class="card"><div class="card-heading"><h2 class="card-title">Quick actions</h2></div><div class="shortcuts"><a class="shortcut deposit" href="{% url 'deposit' %}">↓ Deposit</a><a class="shortcut withdraw" href="{% url 'withdraw' %}">↑ Withdraw</a></div><div class="card-heading" style="margin-top:32px"><h2 class="card-title">Account status</h2></div><p class="page-description">Your S4M Trust Bank account is active and ready for everyday banking.</p></div>
+  </div>
+  <div class="card" style="margin-top:20px"><div class="card-heading"><h2 class="card-title">Recent activity</h2><a class="text-link" href="{% url 'transactions' %}">View all</a></div>{% include "partials/transaction_list.html" with transactions=recent_transactions %}</div>
+</div>
+{% endblock %}

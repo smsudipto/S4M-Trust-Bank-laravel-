@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Deposit money | S4M Trust Bank{% endblock %}
+{% block content %}
+<div class="page-content container-fluid">
+  <div class="page-heading"><div><p class="eyebrow">Move money</p><h1>Deposit money</h1><p class="page-description">Add funds to your S4M Trust Bank account securely.</p></div></div>
+  <div class="form-layout">
+    <div class="card form-card"><div class="metric-icon deposit">↓</div><h2 style="margin-top:18px">Add to your balance</h2><p>Enter the amount you would like to deposit. Your balance and activity will update instantly.</p>{% include "partials/messages.html" %}<form method="post" novalidate>{% csrf_token %}<label class="amount-label" for="{{ form.amount.id_for_label }}">Amount</label><div class="amount-input-wrap"><span class="currency-prefix">৳</span>{{ form.amount }}</div><p class="form-note">Enter an amount in BDT, up to 2 decimal places.</p>{% for error in form.amount.errors %}<div class="feedback error">{{ error }}</div>{% endfor %}<button class="submit-button" type="submit">Confirm deposit</button></form></div>
+    <div class="card info-card">✓<h3>Safe and simple</h3><p>This is a simulated banking environment for demonstration purposes.</p><ul><li>Amounts are stored in BDT.</li><li>Transactions are saved locally.</li><li>All activity is shown in your history.</li></ul></div>
+  </div>
+</div>
+{% endblock %}

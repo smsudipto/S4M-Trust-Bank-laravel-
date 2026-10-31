@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block title %}Transaction history | S4M Trust Bank{% endblock %}
+{% block content %}
+<div class="page-content container-fluid"><div class="page-heading"><div><p class="eyebrow">Your activity</p><h1>Transaction history</h1><p class="page-description">Review every deposit and withdrawal from your account.</p></div></div><div class="card history-card"><div class="history-header"><h2 class="card-title">All transactions</h2><span class="history-count">{{ transactions|length }} transaction{{ transactions|length|pluralize }}</span></div><div class="history-list">{% include "partials/transaction_list.html" %}</div></div></div>
+{% endblock %}

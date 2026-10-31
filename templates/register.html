@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block title %}Register | S4M Trust Bank{% endblock %}
+{% block auth_content %}
+<div class="auth-shell"><div class="auth-card"><div class="brand auth-brand"><div class="brand-mark">N</div><div><span class="brand-name">S4M Trust Bank</span><span class="brand-subtitle">PERSONAL BANKING</span></div></div><h1>Create your account</h1><p class="page-description">Start managing your simulated finances securely.</p><form method="post" novalidate>{% csrf_token %}{% for field in form %}<label class="amount-label" for="{{ field.id_for_label }}">{{ field.label }}</label><input class="auth-input" id="{{ field.id_for_label }}" name="{{ field.html_name }}" type="{{ field.field.widget.input_type|default:'text' }}" {% if field.field.required %}required{% endif %}>{% for error in field.errors %}<div class="feedback error">{{ error }}</div>{% endfor %}{% endfor %}<button class="submit-button auth-submit" type="submit">Create account</button></form><p class="auth-footer">Already have an account? <a href="{% url 'login' %}">Sign in</a></p></div></div>
+{% endblock %}

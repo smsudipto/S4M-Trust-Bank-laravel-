@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block title %}Login | S4M Trust Bank{% endblock %}
+{% block auth_content %}
+<div class="auth-shell"><div class="auth-card"><div class="brand auth-brand"><div class="brand-mark">N</div><div><span class="brand-name">S4M Trust Bank</span><span class="brand-subtitle">PERSONAL BANKING</span></div></div><h1>Welcome back</h1><p class="page-description">Sign in to manage your account securely.</p>{% if form.errors %}<div class="feedback error">Please check your username and password.</div>{% endif %}<form method="post">{% csrf_token %}<label class="amount-label" for="id_username">Username</label><input class="auth-input" id="id_username" name="username" required autofocus><label class="amount-label" for="id_password">Password</label><input class="auth-input" id="id_password" name="password" type="password" required><button class="submit-button auth-submit" type="submit">Sign in</button></form><p class="auth-footer">New to S4M Trust Bank? <a href="{% url 'register' %}">Create an account</a></p></div></div>
+{% endblock %}
